@@ -4,6 +4,7 @@ import android.os.Parcelable
 import androidx.compose.runtime.Immutable
 import kotlinx.parcelize.Parcelize
 import kotlinx.parcelize.RawValue
+import java.util.Objects
 import java.util.UUID
 
 @Parcelize
@@ -31,8 +32,8 @@ class NavKey<NavTarget> private constructor(
     }
 
     override fun hashCode(): Int {
-        var result = navTarget?.hashCode() ?: 0
-        result = 31 * result + id.hashCode()
+        var result = Objects.hashCode(navTarget)
+        result = 31 * result + Objects.hashCode(id)
         return result
     }
 
